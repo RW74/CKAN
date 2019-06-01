@@ -32,6 +32,15 @@ namespace CKAN
             winReg = new Win32Registry();
         }
 
+        protected override bool ProcessDialogKey (Keys keyData)
+        {
+            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape) {
+                this.Close();
+                return true;
+            }
+            return base.ProcessDialogKey(keyData);
+        }
+
         private void SettingsDialog_Load(object sender, EventArgs e)
         {
             UpdateDialog();

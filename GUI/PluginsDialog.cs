@@ -13,6 +13,15 @@ namespace CKAN
 
         private OpenFileDialog m_AddNewPluginDialog = new OpenFileDialog();
 
+        protected override bool ProcessDialogKey (Keys keyData)
+        {
+            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape) {
+                this.Close();
+                return true;
+            }
+            return base.ProcessDialogKey(keyData);
+        }
+
         private void PluginsDialog_Load(object sender, EventArgs e)
         {
             DeactivateButton.Enabled = false;

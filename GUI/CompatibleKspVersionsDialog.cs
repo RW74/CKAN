@@ -41,6 +41,15 @@ namespace CKAN
             SortAndAddVersionsToList(knownVersions, compatibleVersions);
         }
 
+        protected override bool ProcessDialogKey (Keys keyData)
+        {
+            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape) {
+                this.Close();
+                return true;
+            }
+            return base.ProcessDialogKey(keyData);
+        }
+
         private void CompatibleKspVersionsDialog_Shown(object sender, EventArgs e)
         {
             if (_ksp.CompatibleVersionsAreFromDifferentKsp)

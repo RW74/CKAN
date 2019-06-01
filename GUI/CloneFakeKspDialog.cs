@@ -16,7 +16,16 @@ namespace CKAN
         private GUIUser user = new GUIUser();
         private KSPManager manager;
 
-        public CloneFakeKspDialog(KSPManager manager)
+        protected override bool ProcessDialogKey (Keys keyData)
+        {
+            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape) {
+                this.Close();
+                return true;
+            }
+            return base.ProcessDialogKey(keyData);
+        }
+
+        public CloneFakeKspDialog (KSPManager manager)
             : base()
         {
             this.manager = manager;
